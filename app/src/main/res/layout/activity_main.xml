@@ -75,6 +75,16 @@
             android:text="Entrar"
             />
 
+        <Button
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/forgot_password_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textColor="#006D3E"
+            android:text="Esqueceu a senha?"
+            />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
