@@ -9,6 +9,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity(), TextWatcher {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     private val emailTextField: TextInputLayout by lazy { findViewById(R.id.email_text_input_layout) }
     private val passwordTextField: TextInputLayout by lazy { findViewById(R.id.password_text_input_layout) }
     private val loginButton: Button by lazy { findViewById(R.id.login_button) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +42,22 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
     private fun validateLogin() {
         val email = emailTextField.editText?.text.toString().trim()
-        emailTextField.error =
-            if (email.matches(Regex("[A-Za-z0-9.]+@[A-Za-z]+\\.[A-Za-z]+"))) null else "Email inválido"
+        if (email.matches(Regex("[A-Za-z0-9.]+@[A-Za-z]+\\.[A-Za-z]+"))) {
+            emailTextField.error = null
+        } else {
+            emailTextField.error = "Email inválido"
+            return
+        }
 
         val password = passwordTextField.editText?.text.toString().trim()
-        passwordTextField.error = if (password.length > 4) null else "Senha deve ter mais de 4 caracteres"
+        if (password.length > 4) {
+            passwordTextField.error = null
+        } else {
+            passwordTextField.error =  "Senha deve ter mais de 4 caracteres"
+            return
+        }
+
+        Snackbar.make(loginButton, "Login efetuado com sucesso", Snackbar.LENGTH_LONG).show()
     }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
