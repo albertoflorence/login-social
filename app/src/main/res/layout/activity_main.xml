@@ -25,8 +25,8 @@
             android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Logo da Trybe"
             android:layout_marginBottom="50dp"
+            android:contentDescription="Logo da Trybe"
             app:srcCompat="@drawable/logo" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -54,9 +54,9 @@
             android:layout_marginBottom="12dp"
             android:hint="Senha"
             android:visibility="visible"
+            app:endIconMode="password_toggle"
             app:startIconContentDescription="Ícone de senha"
-            app:startIconDrawable="@drawable/password_icon_24dp"
-            app:endIconMode="password_toggle">
+            app:startIconDrawable="@drawable/password_icon_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -72,19 +72,35 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:enabled="false"
-            android:text="Entrar"
-            />
+            android:text="Entrar" />
 
         <Button
-            style="@style/Widget.Material3.Button.TextButton"
             android:id="@+id/forgot_password_button"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textColor="#006D3E"
             android:text="Esqueceu a senha?"
-            />
+            android:textColor="#006D3E" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_up_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:text="Criar nova conta"
+        android:textColor="#006D3E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linear_container"
+        app:layout_constraintVertical_bias="0.953" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
