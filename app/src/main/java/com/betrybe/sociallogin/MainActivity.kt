@@ -40,11 +40,11 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
     private fun validateLogin() {
         val email = emailTextField.editText?.text.toString().trim()
-        if (email.matches(Regex("[A-Za-z0-9.]+@[A-Za-z]+\\.[A-Za-z]+"))) {
-            emailTextField.error = null
-        } else {
-            emailTextField.error = "Email inválido"
-        }
+        emailTextField.error =
+            if (email.matches(Regex("[A-Za-z0-9.]+@[A-Za-z]+\\.[A-Za-z]+"))) null else "Email inválido"
+
+        val password = passwordTextField.editText?.text.toString().trim()
+        passwordTextField.error = if (password.length > 4) null else "Senha deve ter mais de 4 caracteres"
     }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
