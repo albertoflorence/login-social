@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
         emailTextField.editText?.addTextChangedListener(this)
         passwordTextField.editText?.addTextChangedListener(this)
+        loginButton.setOnClickListener { validateLogin() }
 
     }
 
@@ -37,9 +38,18 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         return password.isNotEmpty()
     }
 
+    private fun validateLogin() {
+        val email = emailTextField.editText?.text.toString().trim()
+        if (email.matches(Regex("[A-Za-z0-9.]+@[A-Za-z]+\\.[A-Za-z]+"))) {
+            emailTextField.error = null
+        } else {
+            emailTextField.error = "Email inválido"
+        }
+    }
+
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
     override fun afterTextChanged(p0: Editable?) {
         loginButton.isEnabled = validateEmail() && validatePassword()
